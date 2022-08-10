@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hugo's Cat Cafe</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="cats">
+    <div id="cat1" class="cat"></div>
+    <div id="cat2" class="cat"></div>
+    <div id="cat3" class="cat"></div>
+    <div id="cat4" class="cat"></div>
+    <div id="cat5" class="cat"></div>
+    <div id="cat6" class="cat"></div>
+  </div>
+
+  <section id="cat6GUI" class="hidden">
+    <button onclick="toMain()">Back to the cafe</button>
+    <h1>Order a drink!</h1>
+    <div class="container">
+      <div class="item">
+        <img src="brainJuice.jfif" />
+        <p>Brain Juice</p>
+        <button onclick="randomTip()">Order</button>
+      </div>
+      <div id="calculatorDiv" class="item">
+        <img src="grape.jfif" />
+        <p>Math Wiz</p>
+        <button onclick="showCalculator()">Order</button>
+      </div>
+      <div id="lengthDiv" class="item">
+        <img src="cap.jfif" />
+        <p>Long Cappucino</p>
+        <button onclick="showLength()">Order</button>
+      </div>
+    </div>
+    <p id="studying-tip"></p>
+
+    <!-- Calculator -->
+    <section id="calculator" class="hidden">
+      <h2>Drinking the pop gave you the power to be a human calculator!</h2>
+    <form name="calculator">
+   <table>
+      <tr>
+         <td colspan="4">
+            <input type="text" name="display" id="display" disabled>
+           
+         </td>
+      </tr>
+      <tr>
+            <td><input type="button" name="one" value="1" onclick="calculator.display.value += '1'"></td>
+            <td><input type="button" name="two" value="2" onclick="calculator.display.value += '2'"></td>
+            <td><input type="button" name="three" value="3" onclick="calculator.display.value += '3'"></td>
+            <td><input type="button" class="operator" name="plus" value="+" onclick="calculator.display.value += '+'"></td>
+     </tr>
+     <tr>
+            <td><input type="button" name="four" value="4" onclick="calculator.display.value += '4'"></td>
+            <td><input type="button" name="five" value="5" onclick="calculator.display.value += '5'"></td>
+            <td><input type="button" name="six" value="6" onclick="calculator.display.value += '6'"></td>
+            <td><input type="button" class="operator" name="minus" value="-" onclick="calculator.display.value += '-'"></td>
+     </tr>
+     <tr>
+            <td><input type="button" name="seven" value="7" onclick="calculator.display.value += '7'"></td>
+            <td><input type="button" name="eight" value="8" onclick="calculator.display.value += '8'"></td>
+            <td><input type="button" name="nine" value="9" onclick="calculator.display.value += '9'"></td>
+            <td><input type="button" class="operator" name="times" value="x" onclick="calculator.display.value += '*'"></td>
+     </tr>
+     <tr>
+            <td><input type="button" id="clear" name="clear" value="c" onclick="calculator.display.value = ''"></td>
+            <td><input type="button" name="zero" value="0" onclick="calculator.display.value += '0'"></td>
+            <td><input type="button" name="doit" value="=" onclick="calculator.display.value = eval(calculator.display.value)"></td>
+            <td><input type="button" class="operator" name="div" value="/" onclick="calculator.display.value += '/'"></td>
+      
+      </tr>
+   </table>
+</form>
+
+  </section>
+    
+    <!-- Length converter -->
+    <section id="length" class="hidden">
+        <h2>Drinking the cappucino gave you the power to convert different lengths, but it's side effects make you dizzy</h2>
+        <div class="inputContainer">
+            <label for="feet">Feet</label><input type="number" name="" id="feet"  oninput="convertToOthers('feet',this.value)">
+        </div>
+        <div class="inputContainer">
+            <label for="meter">Meters</label><input type="number" name="" id="meter" oninput="convertToOthers('meter',this.value)">
+        </div>
+        <div class="inputContainer">
+            <label for="inches">Inches</label><input type="number" name="" id="inches" oninput="convertToOthers('inch',this.value)">
+        </div>
+        <div class="inputContainer">
+            <label for="cm">Cm</label><input type="number" name="" id="cm" oninput="convertToOthers('cm',this.value)">
+        </div>
+        <div class="inputContainer">
+            <label for="yards">Yards</label><input type="number" name="" id="yards" oninput="convertToOthers('yard',this.value)">
+        </div>
+        <div class="inputContainer">
+            <label for="km">Kilometers</label><input type="number" name="" id="km" oninput="convertToOthers('km',this.value)">
+        </div>
+        <div class="inputContainer">
+            <label for="miles">Miles</label><input type="number" name="" id="miles" oninput="convertToOthers('mile',this.value)">
+        </div>
+    </section>
+  </section>
+
+  <section id="cat2GUI" class="hidden">
+    <button onclick="toMain()">Back to the cafe</button>
+    <h1>Dictionary</h1>
+    <input id="dictionary-query" type="text" placeholder="need word?" />
+    <button id="dictionary-button"> get word :)</button>
+    <div>Bro hold my definitions </div>
+    <div id="dictionary-holder"></div>
+   
+  </section>
+
+  <section id="cat3GUI" class="hidden">
+    <button onclick="toMain()">Back to the cafe</button>
+    <h1>Reminder</h1>
+    <input type="number" class="time" placeholder="Hours" />
+    <input type="number" class="time" placeholder="Minutes" />
+    <input type="number" class="time" placeholder="Seconds" />
+    <input id="reminders" type="text" placeholder="Task" />
+    <button id="reminder-button" onclick="remind()"> Save my tasks</button>
+    <div>Don't forget to remind me!</div>
+    <div id="reminder-holder"></div>
+  </section>
+
+  <section id="cat5GUI" class="hidden">
+    <button onclick="toMain()">Back to the cafe</button>
+    <h1>To Do List</h1>
+    <div id="myDIV" class="header">
+
+      <input type="text" id="myInput" placeholder="Title...">
+      <button id="new-element">Add</button>
+      <div id="list-append">
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="cat1GUI" class="water hidden">
+    <button onclick="toMain()">Back to the cafe</button>
+      <h1>Drink Your Water</h1>
+  <h3>Finish 2 Liters MINIMAL</h3>
+  <div class="cup">
+    <div class="remained" id="remained">
+      <span id="liters"></span>
+      <small>Remained</small>
+    </div>
+
+    <div class="percentage" id="percentage">
+
+    </div>
+  </div>
+
+  <div class="cups">
+    <div class="cup cup-small">8.5 oz</div>
+    <div class="cup cup-small">8.5 oz</div>
+    <div class="cup cup-small">8.5 oz</div>
+    <div class="cup cup-small">8.5 oz</div>
+    <div class="cup cup-small">8.5 oz</div>
+    <div class="cup cup-small">8.5 oz</div>
+    <div class="cup cup-small">8.5 oz</div>
+    <div class="cup cup-small">8.5 oz</div>
+  </div>
+
+  </section>
+  <section id="cat4GUI" class="hidden">
+    <button onclick="toMain()">Back to the cafe</button>
+    <h1>Jukebox</h1>
+    <button onclick="prevPlaylist()">Previous</button>
+    <button onclick="nextPlaylist()">Next</button>
+    <div id="music-holder">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX8Uebhn9wzrS?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
